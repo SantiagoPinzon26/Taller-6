@@ -5,9 +5,6 @@ import java.util.List;
 
 public class Diario
 {
-    /**
-     * La lista de restaurantes, que pueden ser visitados o no
-     */
     private List<Restaurante> restaurantes;
 
     public Diario( )
@@ -15,11 +12,6 @@ public class Diario
         this.restaurantes = new ArrayList<Restaurante>( );
     }
 
-    /**
-     * Retorna una lista de restaurantes
-     * @param completos Si es true, retorna todos los restaurantes; si es false, sólo los visitados
-     * @return Una lista con todos los restaurantes o sólo con los visitados
-     */
     public List<Restaurante> getRestaurantes( boolean completos )
     {
         List<Restaurante> seleccion;
@@ -35,13 +27,8 @@ public class Diario
             }
         }
         return seleccion;
-
     }
 
-    /**
-     * Agrega un restaurante al diario, al final de la lista
-     * @param restaurante
-     */
     public void agregarRestaurante( Restaurante restaurante )
     {
         this.restaurantes.add( restaurante );

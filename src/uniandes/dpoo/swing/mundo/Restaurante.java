@@ -3,13 +3,9 @@ package uniandes.dpoo.swing.mundo;
 public class Restaurante
 {
     private String nombre;
-
     private int calificacion;
-
     private int coordenadaX;
-
     private int coordenadaY;
-
     public boolean visitado;
 
     public Restaurante( String nombre, int calificacion, int x, int y, boolean visitado )
@@ -49,8 +45,6 @@ public class Restaurante
     @Override
     public String toString( )
     {
-     // TODO completar para que retorne el nombre del restaurante
-        return super.toString( );
+        return nombre;
     }
-
 }

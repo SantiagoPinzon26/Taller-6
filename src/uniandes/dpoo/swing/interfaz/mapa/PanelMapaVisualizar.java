@@ -2,8 +2,10 @@ package uniandes.dpoo.swing.interfaz.mapa;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -16,14 +18,7 @@ import uniandes.dpoo.swing.mundo.Restaurante;
 @SuppressWarnings("serial")
 public class PanelMapaVisualizar extends JPanel
 {
-    /**
-     * La etiqueta donde se dibuja el mapa y se hacen las señales de los restaurantes
-     */
     private JLabel labMapa;
-
-    /**
-     * La lista de restaurantes que se están dibujando en el mapa
-     */
     private List<Restaurante> restaurantes;
 
     public PanelMapaVisualizar( )
@@ -37,15 +32,27 @@ public class PanelMapaVisualizar extends JPanel
     public void paint( Graphics g )
     {
         super.paint( g );
-        Graphics2D g2d = ( Graphics2D )g;
+        if( restaurantes == null ) return;
 
-     // TODO completar y hacer que se vean los nombres de todos los restaurantes en el mapa
+        Graphics2D g2d = ( Graphics2D )g;
+        g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON );
+        g2d.setFont( new Font( "SansSerif", Font.BOLD, 11 ) );
+
+        for( Restaurante r : restaurantes )
+        {
+            int rx = r.getX( );
+            int ry = r.getY( );
+
+            // Dibujar punto rojo
+            g2d.setColor( Color.RED );
+            g2d.fillOval( rx - 4, ry - 4, 9, 9 );
+
+            // Dibujar nombre del restaurante
+            g2d.setColor( Color.RED );
+            g2d.drawString( r.getNombre( ), rx + 6, ry + 4 );
+        }
     }
 
-    /**
-     * Actualiza la lista de restaurantes y llama al método repaint() para que se actualice el mapa
-     * @param nuevosRestaurantes
-     */
     public void actualizarMapa( List<Restaurante> nuevosRestaurantes )
     {
         if( restaurantes != null )
